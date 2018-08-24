@@ -1,0 +1,41 @@
+/* font-family: 'Josefin Slab', serif;
+font-family: 'Oswald', sans-serif; */
+
+html {
+    min-height: 100vh;
+    background-image: url(../images/exterior1.jpg);
+}
+
+body{
+    background-color: transparent;
+}
+
+.btn-primary{
+    background-color: #36b7ba;
+    border-color: #36b7ba;
+    font-family: 'Oswald', sans-serif;
+}
+
+.btn-primary:hover{
+    background-color: #185051;
+}
+
+@media screen and (max-width: 670px) {
+    #loadingPageImgLogo{
+        width: 350px;
+    }
+}
+
+/* Width at 320px and below */
+@media screen and (max-width: 320px) {
+    #loadingPageImgLogo{
+        width: 168px;
+    }
+}
+
+/* Width at 168px and below */
+@media screen and (max-width: 168px){
+    #loadingPageImgLogo{
+        width: 140px;
+    }
+}

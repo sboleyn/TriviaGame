@@ -20,6 +20,12 @@ body{
     background-color: #185051;
 }
 
+.mainContentBox{
+    background-color: red;
+    height: 200px;
+    border-radius: 5px;
+}
+
 @media screen and (max-width: 670px) {
     #loadingPageImgLogo{
         width: 350px;

@@ -4,6 +4,7 @@ font-family: 'Oswald', sans-serif; */
 html {
     min-height: 100vh;
     background-image: url(../images/exterior1.jpg);
+    background-size: cover;
 }
 
 body{
@@ -21,9 +22,19 @@ body{
 }
 
 .mainContentBox{
-    background-color: red;
+    background-color: darkred;
     height: 200px;
     border-radius: 5px;
+    position: relative;
+}
+
+.mainContentBox p{
+    margin: 0px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
 }
 
 @media screen and (max-width: 670px) {

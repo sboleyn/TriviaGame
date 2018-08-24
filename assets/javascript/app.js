@@ -67,15 +67,24 @@ var questions = {
     // }
 }
 
-
 $("#startButton").on("click",function(){
     $(".container").empty();
     $(".container").html('<div class="row" id="row1">');
     $(".container").append('<div class="row" id="row2">');
-    $("#row1").html('<div class="col-5 mainContentBox mt-5" id="question">');
-    $('#question').append(questions.a.question);
-    $("#row1").append('<div class="col-5 mainContentBox mt-5 mx-auto" id="timer">');
-    $('#timer').append(questions.a.question);
-    $("#row2").html('<div class="col-6 mainContentBox" id="answer">');
-    $("#row2").append('<div class="col-6 mainContentBox" id="description">');
+    $("#row1").html('<div class="col-5 mainContentBox mt-5 mb-5 mx-auto" id="question">');
+    $('#question').append('<p>' + questions.a.question + '</p>');
+    $("#row1").append('<div class="col-5 mainContentBox mt-5 mb-5 mx-auto" id="timer">');
+    // $('#timer').append('<p>' + questions.a.question + '</p>');
+    $("#row2").html('<div class="col-5 mainContentBox mt-2 mx-auto" id="answer">');
+    $("#row2").append('<div class="col-5 mainContentBox mt-2 mx-auto" id="description">');
+
+    $("#timer").append("<p>Time Remaining: 25 seconds</p>");
+
+    $('#answer').append(
+        "<p> A. " + questions.a.answers[0] + "<br>"+
+        "B. " + questions.a.answers[1]+ "<br>"+
+        "C. " + questions.a.answers[2]+ "<br>"+
+        "D. " + questions.a.answers[3]+ "<br></p>"
+    )
+
 })

@@ -88,3 +88,7 @@ $("#startButton").on("click",function(){
     )
 
 })
+
+for (var i=0; i<questions.length; i++){
+    
+}

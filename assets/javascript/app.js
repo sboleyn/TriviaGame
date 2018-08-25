@@ -94,11 +94,15 @@ $("#startButton").on("click",function(){
 
     //Add columns to row 2 and first question
     $("#row2").html('<div class="col-5 mainContentBox mt-2 mx-auto" id="question">');
-    $('#question').append('<p>' + questions[0].question + '</p>');
     $("#row2").append('<div class="col-5 mainContentBox mt-2 mx-auto" id="answer">');
 
     $("#timer").append("<p>Time Remaining: 30 seconds</p>");
-    
+    runGame();
+})
+
+function runGame(){
+    //Game starts here
+    $('#question').append('<p>' + questions[0].question + '</p>');
     var theTimer = setInterval(myTimer, 1000);
 
     $('#answer').append(
@@ -107,10 +111,9 @@ $("#startButton").on("click",function(){
         "C. " + questions[0].answers[2]+ "<br>"+
         "D. " + questions[0].answers[3]+ "<br></p>"
     )
+};
 
-})
-
-// for (var i=0; i<questions.length; i++){
+// 
     
 // }
 

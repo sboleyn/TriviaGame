@@ -68,6 +68,19 @@ var questions = {
 }
 
 var t=30;
+var correct=0;
+var incorrect=0;
+var unanswered=0;
+
+function myTimer(){
+    if (t>0){
+    t--;
+    $("#timer").html("<p>Time Remaining: " + t + " seconds</p>");
+    }
+    else{
+        clearInterval(theTimer);
+    }
+}
 
 $("#startButton").on("click",function(){
     $(".container").empty();
@@ -76,7 +89,7 @@ $("#startButton").on("click",function(){
     $(".container").append('<div class="row" id="row2">');
     //Add columns to row 1 and initial timer
     $("#row1").html('<div class="col-5 mainContentBox mt-5 mb-5 mx-auto" id="logo">');
-    $("#logo").append("<img src='assets/images/seinfeldLogo3.png' id='quizLogo'>");
+    $("#logo").append("<p><img src='assets/images/seinfeldLogo3.png' id='quizLogo'></p>");
     $("#row1").append('<div class="col-5 mainContentBox mt-5 mb-5 mx-auto" id="timer">');
 
     //Add columns to row 2 and first question
@@ -87,16 +100,6 @@ $("#startButton").on("click",function(){
     $("#timer").append("<p>Time Remaining: 30 seconds</p>");
     
     var theTimer = setInterval(myTimer, 1000);
-
-    function myTimer(){
-        if (t>0){
-        t--;
-        $("#timer").html("<p>Time Remaining: " + t + " seconds</p>");
-        }
-        else{
-            clearInterval(theTimer);
-        }
-    }
 
     $('#answer').append(
         "<p> A. " + questions.a.answers[0] + "<br>"+

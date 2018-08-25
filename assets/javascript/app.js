@@ -67,18 +67,35 @@ var questions = {
     // }
 }
 
+var t=30;
+
 $("#startButton").on("click",function(){
     $(".container").empty();
+    //Adds the first two rows to the page
     $(".container").html('<div class="row" id="row1">');
     $(".container").append('<div class="row" id="row2">');
+    //Add columns to row 1 and append the 1st question and initial timer
     $("#row1").html('<div class="col-5 mainContentBox mt-5 mb-5 mx-auto" id="question">');
     $('#question').append('<p>' + questions.a.question + '</p>');
     $("#row1").append('<div class="col-5 mainContentBox mt-5 mb-5 mx-auto" id="timer">');
-    // $('#timer').append('<p>' + questions.a.question + '</p>');
+
+    //Add columns to row 2
     $("#row2").html('<div class="col-5 mainContentBox mt-2 mx-auto" id="answer">');
     $("#row2").append('<div class="col-5 mainContentBox mt-2 mx-auto" id="description">');
 
-    $("#timer").append("<p>Time Remaining: 25 seconds</p>");
+    $("#timer").append("<p>Time Remaining: 30 seconds</p>");
+    
+    var myVar = setInterval(myTimer, 1000);
+
+    function myTimer(){
+        if (t>0){
+        t--;
+        $("#timer").html("<p>Time Remaining: " + t + " seconds</p>");
+        }
+        else{
+            clearInterval(myVar);
+        }
+    }
 
     $('#answer').append(
         "<p> A. " + questions.a.answers[0] + "<br>"+
@@ -89,6 +106,12 @@ $("#startButton").on("click",function(){
 
 })
 
-for (var i=0; i<questions.length; i++){
+// for (var i=0; i<questions.length; i++){
     
-}
+// }
+
+
+
+    
+
+

@@ -85,20 +85,51 @@ $("#startButton").on("click", function () {
     runGame();
 })
 
+function runGame(){
+    var correct = 0;
+    var incorrect = 0;
+    var unanswered = 0;
+    runQuestion();
+}
+
 function runQuestion() {
+    var answerChosen = false;
     //Game starts here
     $('#question').append('<p>' + questions[0].question + '</p>');
     var t = 5;
     var time = setInterval(function () {
-        if (t > 0) {
+        //Stop question when an answer is presented
+        if (answerChosen){
+            console.log("answerIsChosen");
+            clearInterval(time);
+            return;
+        }
+        //Timer is counting down
+
+        if (t > 0 && !answerChosen) {
             t--;
             $("#timer").html("<p>Time Remaining: " + t + " seconds</p>");
+
+            $(".mulChoice").off("click");
+            $(".mulChoice").click(function(){
+                // $(this).css("backgroundColor", "black");
+                //stops timer
+                answerChosen = true;
+                $(this).addClass("clicked");
+               
+                // if ($(this).innerHTML.toLowerCase() === questions[0].answer[0].toLowerCase()){
+                // console.log($(this));
+                // };
+             });
+
+
+            //if timer reaches 0, then do this
             if (t<=0){
                 $("#timer").html("<p>Time Remaining: " + t + " seconds</p>");
                 $("#answer").html("<p>You're out of time! <br> The correct answer is: " + questions[0].answer[0] + "</p>");
 
                 setInterval(function(){
-                    $("#answer").html("<img src=" + questions[0].desc +" style='max-width: 100%; height: auto; display: block; margin-top: 10px;'>");
+                    $("#answer").html("<img src=" + questions[0].desc + " class='gifImage img-responsive mx-auto';>");
                 }, (1000*7))
             }
         };
@@ -107,19 +138,15 @@ function runQuestion() {
 
 
     $('#answer').append(
-        "<p> A. " + questions[0].answers[0] + "<br>" +
-        "B. " + questions[0].answers[1] + "<br>" +
-        "C. " + questions[0].answers[2] + "<br>" +
-        "D. " + questions[0].answers[3] + "<br></p>"
-    )
+        "<p> A. <span class='mulChoice'>" + questions[0].answers[0] + "</span><br>" +
+        "B. <span class='mulChoice'>" + questions[0].answers[1] + "</span><br>" +
+        "C. <span class='mulChoice'>" + questions[0].answers[2] + "</span><br>" +
+        "D. <span class='mulChoice'>" + questions[0].answers[3] + "</span><br></p>"
+    );
+
 };
 
-function runGame(){
-    var correct = 0;
-    var incorrect = 0;
-    var unanswered = 0;
-    runQuestion();
-}
+
 
 // 
 

@@ -85,63 +85,78 @@ $("#startButton").on("click", function () {
     runGame();
 })
 
-function runGame(){
+function runGame() {
     var correct = 0;
     var incorrect = 0;
     var unanswered = 0;
-    runQuestion();
+    var qi=0;
+    // while (qi<questions.length){
+    // runQuestion(qi);
+    // };
+
+    runQuestion(qi);
+    
+    function runQuestion(qi) {
+        var answerChosen = false;
+        //Game starts here
+        $('#question').append('<p>' + questions[qi].question + '</p>');
+        var t = 5;
+        var time = setInterval(function () {
+            //Stop question when user clicks answer and handles right/wrong answers
+            if (answerChosen) {
+                console.log("answerIsChosen");
+                if ($("#clicked").text().toLowerCase() === questions[qi].answer[0].toLowerCase()) {
+                    // console.log("correct");
+                    
+                    correct += 1;
+                    qi += 1;
+                }
+                else {
+                    // console.log("incorrect");
+                    incorrect += 1;
+                    qi += 1;
+                };
+                ;
+                clearInterval(time);
+                return;
+            }
+            //Timer is counting down
+    
+            if (t > 0 && !answerChosen) {
+                t--;
+                $("#timer").html("<p>Time Remaining: " + t + " seconds</p>");
+    
+                $(".mulChoice").off("click");
+                $(".mulChoice").click(function () {
+                    //stops timer
+                    $(this).attr("id", "clicked");
+                    answerChosen = true;
+                    return;
+                })
+    
+                //if timer reaches 0, then do this
+                if (t <= 0) {
+                    clearInterval(time);
+                    $("#timer").html("<p>Time Remaining: " + t + " seconds</p>");
+                    $("#answer").html("<p>You're out of time! <br> The correct answer is: " + questions[qi].answer[0] + "</p>");
+    
+                    unanswered += 1;
+                    qi += 1;
+                    
+                    setInterval(function () {
+                        $("#answer").html("<img src=" + questions[qi].desc + " class='gifImage img-responsive mx-auto';>");
+                    }, (1000 * 7))
+                }
+            };
+            console.log(qi, correct, unanswered, incorrect)
+        }, 1000);
 }
 
-function runQuestion() {
-    var answerChosen = false;
-    //Game starts here
-    $('#question').append('<p>' + questions[0].question + '</p>');
-    var t = 5;
-    var time = setInterval(function () {
-        //Stop question when an answer is presented
-        if (answerChosen){
-            console.log("answerIsChosen");
-            clearInterval(time);
-            return;
-        }
-        //Timer is counting down
-
-        if (t > 0 && !answerChosen) {
-            t--;
-            $("#timer").html("<p>Time Remaining: " + t + " seconds</p>");
-
-            $(".mulChoice").off("click");
-            $(".mulChoice").click(function(){
-                // $(this).css("backgroundColor", "black");
-                //stops timer
-                answerChosen = true;
-                $(this).addClass("clicked");
-               
-                // if ($(this).innerHTML.toLowerCase() === questions[0].answer[0].toLowerCase()){
-                // console.log($(this));
-                // };
-             });
-
-
-            //if timer reaches 0, then do this
-            if (t<=0){
-                $("#timer").html("<p>Time Remaining: " + t + " seconds</p>");
-                $("#answer").html("<p>You're out of time! <br> The correct answer is: " + questions[0].answer[0] + "</p>");
-
-                setInterval(function(){
-                    $("#answer").html("<img src=" + questions[0].desc + " class='gifImage img-responsive mx-auto';>");
-                }, (1000*7))
-            }
-        };
-        // console.log(t);
-    }, 1000);
-
-
     $('#answer').append(
-        "<p> A. <span class='mulChoice'>" + questions[0].answers[0] + "</span><br>" +
-        "B. <span class='mulChoice'>" + questions[0].answers[1] + "</span><br>" +
-        "C. <span class='mulChoice'>" + questions[0].answers[2] + "</span><br>" +
-        "D. <span class='mulChoice'>" + questions[0].answers[3] + "</span><br></p>"
+        "<p> A. <span class='mulChoice'>" + questions[qi].answers[0] + "</span><br>" +
+        "B. <span class='mulChoice'>" + questions[qi].answers[1] + "</span><br>" +
+        "C. <span class='mulChoice'>" + questions[qi].answers[2] + "</span><br>" +
+        "D. <span class='mulChoice'>" + questions[qi].answers[3] + "</span><br></p>"
     );
 
 };

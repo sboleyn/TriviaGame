@@ -62,7 +62,7 @@ body{
 
 @media screen and (max-width: 970px) {
     .mainContentBox p{
-        font-size: small;
+        font-size: medium;
     }
 }
 
@@ -71,7 +71,7 @@ body{
         width: 350px;
     }
     .mainContentBox p{
-        font-size: x-small;
+        font-size: small;
     }
 }
 
@@ -81,7 +81,7 @@ body{
         width: 168px;
     }
     .mainContentBox p{
-        font-size: xx-small;
+        font-size: x-small;
     }
 }
 

@@ -9,55 +9,55 @@ var questions = [
         question: "Who said, 'He falls ill, she falls in love'?",
         answers: ["Elaine", "Jerry", "Kramer", "George"],
         answer: ["George", 3],
-        desc: "George calls this 'Clara Nightingale Syndrome'. Jerry corrects him, 'you mean Florence Nightingale.'"
+        desc: "assets/images/seinfeld2.gif"
     },
     {
         question: "We all remember when George and an Andrea Doria survivor lost out to Elaine's boyfriend, Alan, for an apartment. When George confronts Alan about the apartment, Alan makes a comment about George's what?",
         answers: ["chin", "hairline", "ears", "nose"],
         answer: ["chin", 0],
-        desc: "Alan calls George chinless."
+        desc: "assets/images/seinfeld3.gif"
     },
     {
         question: "George's cousin worked for what restaurant?",
         answers: ["Bouchard's", "Del Posto", "Carmine's", "Patsy's"],
         answer: ["Bouchard's", 0],
-        desc: "George mentions this when he and Jerry visit Mr. Daurimple to talk about the script of their pilot called 'Jerry'. The NBC president had eaten some pasta primavera that Elaine sneezed on from Pfifer's."
+        desc: "assets/images/seinfeld4.gif"
     },
     {
         question: "In the episode 'The Stall', Elaine's rock climbing boyfriend Tony dislikes which kind of sandwiches?",
         answers: ["grilled cheese", "bologna", "pastrami", "peanut butter"],
         answer: ["peanut butter", 3],
-        desc: "George's willingness to provide Tony with something to eat during their rock climbing trip results in a nasty fall for Elaine's 'mimbo'.",
+        desc: "assets/images/seinfeld5.gif"
     },
     {
         question: "Which of the following is NOT a reason Jerry or George have broken up with a woman?",
         answers: ["She sucked on a peach pit", "She kept paying for dinner", "She 'shushed' them", "She beat them at chess"],
         answer: ["She kept paying for dinner", 1],
-        desc: "George thought his girlfriend was great until she sucked on a pit in 'The Doodle.'' Jerry and George talk about the other two problems in 'The Engagement.'",
+        desc: "assets/images/seinfeld6.gif"
     },
     {
         question: "In the episode when George buys women's glasses Kramer asks George for what, by calling George 'madam?'",
         answers: ["Altoids", "gum", "pretzels", "water"],
         answer: ["pretzels", 2],
-        desc: "George buys ladies' glasses without knowing."
+        desc: "assets/images/seinfeld7.gif"
     },
     {
         question: "In the episode 'The Pothole', Elaine goes to great lengths to order a particular dish from a nearby Chinese restaurant. What is the name of the dish?",
         answers: ["mighty roasted duck", "tangy tofu", "sizzling spring rolls", "supreme flounder"],
         answer: ["supreme flounder", 3],
-        desc: "The flounder was so good, Elaine maintained her cover as a janitor in order to continue eating it."
+        desc: "assets/images/seinfeld8.gif"
     },
     {
         question: "In the United States, the pilot episode of 'Seinfeld' aired in July of what year?",
         answers: ["1986", "1991", "1993", "1989"],
         answer: ["1989", 3],
-        desc: "'Seinfeld' lasted for nine seasons, beginning in July of 1989 and ending in May of 1998."
+        desc: "assets/images/seinfeld9.gif"
     },
     {
         question: "How much was Peterman's historic English cake valued at?",
         answers: ["$2,900", "$29,000", "$129,000", "$229,000"],
         answer: ["$29,000", 1],
-        desc: "Elaine saw the cake in Peterman's private office fridge and thought that it was just another office staff birthday cake or fare-well cake and she was caught on video eating the cake."
+        desc: "assets/images/seinfeld10.gif"
     },
     // 11: {
     //     question: "",
@@ -89,18 +89,27 @@ function runGame() {
     var correct = 0;
     var incorrect = 0;
     var unanswered = 0;
-    var qi = 0;
+    var qi = 1;
     // while (qi<questions.length){
-    // runQuestion(qi);
-    // };
-    
     runQuestion(qi);
-    
+    // };
+
+    // setTimeout(function(){
+    //     while (qi < questions.length) {
+    //         runQuestion(qi);
+    //         qi++;
+    // }, (1000 * 40));
 
     function runQuestion(qi) {
         var answerChosen = false;
         //Game starts here
         $('#question').append('<p>' + questions[qi].question + '</p>');
+        $('#answer').append(
+            "<p> A. <span class='mulChoice'>" + questions[qi].answers[0] + "</span><br>" +
+            "B. <span class='mulChoice'>" + questions[qi].answers[1] + "</span><br>" +
+            "C. <span class='mulChoice'>" + questions[qi].answers[2] + "</span><br>" +
+            "D. <span class='mulChoice'>" + questions[qi].answers[3] + "</span><br></p>"
+        );
         var t = 5;
         var time = setInterval(function () {
             //Stop question when user clicks answer and handles right/wrong answers
@@ -162,11 +171,6 @@ function runGame() {
         }, 1000);
     }
 
-    $('#answer').append(
-        "<p> A. <span class='mulChoice'>" + questions[qi].answers[0] + "</span><br>" +
-        "B. <span class='mulChoice'>" + questions[qi].answers[1] + "</span><br>" +
-        "C. <span class='mulChoice'>" + questions[qi].answers[2] + "</span><br>" +
-        "D. <span class='mulChoice'>" + questions[qi].answers[3] + "</span><br></p>"
-    );
+
 
 };

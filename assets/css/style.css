@@ -37,7 +37,7 @@ body{
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
-    /* font-size: 1vw; */
+    font-size: 100%;
 }
 
 #quizLogo{
@@ -60,9 +60,18 @@ body{
     }
 } */
 
+@media screen and (max-width: 970px) {
+    .mainContentBox p{
+        font-size: small;
+    }
+}
+
 @media screen and (max-width: 670px) {
     #loadingPageImgLogo{
         width: 350px;
+    }
+    .mainContentBox p{
+        font-size: x-small;
     }
 }
 
@@ -71,12 +80,18 @@ body{
     #loadingPageImgLogo{
         width: 168px;
     }
+    .mainContentBox p{
+        font-size: xx-small;
+    }
 }
 
 /* Width at 168px and below */
 @media screen and (max-width: 168px){
     #loadingPageImgLogo{
         width: 140px;
+    }
+    .mainContentBox p{
+        font-size: small;
     }
 }
 

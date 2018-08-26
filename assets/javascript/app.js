@@ -96,6 +96,7 @@ function runGame() {
 
     function runQuestion() {
         $("#question").empty();
+
         if (qi === 10) {
             console.log("i freaking equate");
             $('#question').append("<p>All done. Here's how you did..<br>Correct answers: "+correct+"<br>Incorrect answers: "+incorrect+"<br>Unanswered questions: "+unanswered+"</p>");
@@ -105,6 +106,21 @@ function runGame() {
         var answerChosen = false;
         //Game starts here
         if (qi < questions.length) {
+
+            //change background image depending on question
+            if (qi<2){
+                $('html').css('backgroundImage', 'url(assets/images/exterior1.jpg)')
+            };
+            if (qi>2 && qi<5){
+                $('html').css('backgroundImage', 'url(assets/images/kitchen1.jpg)')
+            };
+            if (qi>=5 && qi<7){
+                $('html').css('backgroundImage', 'url(assets/images/bathroom1.jpg)')
+            };
+            if (qi>=8 && qi<questions.length){
+                $('html').css('backgroundImage', 'url(assets/images/livingRoom1.jpg)')
+            };
+
             $('#question').append('<p>' + questions[qi].question + '</p>');
             $('#answer').html(
                 "<p> A. <span class='mulChoice'>" + questions[qi].answers[0] + "</span><br>" +
@@ -112,7 +128,7 @@ function runGame() {
                 "C. <span class='mulChoice'>" + questions[qi].answers[2] + "</span><br>" +
                 "D. <span class='mulChoice'>" + questions[qi].answers[3] + "</span><br></p>"
             );
-            var t = 30;
+            var t = 31;
             var time = setInterval(function () {
                 //Stop question when user clicks answer and handles right/wrong answers
 

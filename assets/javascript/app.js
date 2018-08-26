@@ -122,7 +122,7 @@ function runGame() {
                 "C. <span class='mulChoice'>" + questions[qi].answers[2] + "</span><br>" +
                 "D. <span class='mulChoice'>" + questions[qi].answers[3] + "</span><br></p>"
             );
-            var t = 3;
+            var t = 30;
             var time = setInterval(function () {
                 //Stop question when user clicks answer and handles right/wrong answers
 

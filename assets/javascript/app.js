@@ -97,17 +97,17 @@ function runGame() {
     
     };
 
-    // if (qi===9){
-    //     var reportCorrect = $("<p>").text(correct);
-    //     var reportIncorrect = $("<p>").text(incorrect);
-    //     var reportUnanswered = $("<p>").text(unanswered);
-    //     $('#answer').empty();
-    //     $('#answer').append(reportCorrect);
-    //     $('#answer').append(reportIncorrect);
-    //     $('#answer').append(reportUnanswered);
-    //     $('#answer').append("<p class='startAgainButton'>Start Again?</p>");
-    //     $(".startAgainButton").click(runGame());
-    // }
+    if (qi===9){
+        var reportCorrect = $("<p>").text(correct);
+        var reportIncorrect = $("<p>").text(incorrect);
+        var reportUnanswered = $("<p>").text(unanswered);
+        $('#answer').empty();
+        $('#answer').append(reportCorrect);
+        $('#answer').append(reportIncorrect);
+        $('#answer').append(reportUnanswered);
+        $('#answer').append("<p class='startAgainButton'>Start Again?</p>");
+        $(".startAgainButton").click(runGame());
+    }
 
     function runQuestion() {
         var answerChosen = false;
@@ -119,20 +119,22 @@ function runGame() {
             "C. <span class='mulChoice'>" + questions[qi].answers[2] + "</span><br>" +
             "D. <span class='mulChoice'>" + questions[qi].answers[3] + "</span><br></p>"
         );
-        var t = 30;
+        var t = 3;
         var time = setInterval(function () {
             //Stop question when user clicks answer and handles right/wrong answers
             if (answerChosen) {
                 // console.log("answerIsChosen");
                 if ($("#clicked").text().toLowerCase() === questions[qi].answer[0].toLowerCase()) {
-                    console.log("correct");
+                    // console.log("correct");
                     $("#answer").html("<p>Right! <br> The correct answer is: " + questions[qi].answer[0] + "</p>");
                     
                     var gitInt = setTimeout(function () {
                         $("#answer").html("<p><img src=" + questions[qi].desc + " class='gifImage img-responsive mx-auto';></p>");
                         qi += 1;
-                        runQuestion();
                         correct += 1;
+                        $("#answer").empty();
+                        $("#question").empty();
+                        runQuestion();
                     }, (1000 * 4))
                     ;
                 }
@@ -144,6 +146,8 @@ function runGame() {
                         $("#answer").html("<p><img src=" + questions[qi].desc + " class='gifImage img-responsive mx-auto';></p>");
                         qi += 1;
                         incorrect += 1;
+                        $("#answer").empty();
+                        $("#question").empty();
                         runQuestion();
                     }, (1000 * 4))
                     
@@ -177,6 +181,8 @@ function runGame() {
                         $("#answer").html("<p><img src=" + questions[qi].desc + " class='gifImage img-responsive mx-auto';></p>");
                         qi += 1;
                         unanswered += 1;
+                        $("#answer").empty();
+                        $("#question").empty();
                         runQuestion();
                     }, (1000 * 4))
 

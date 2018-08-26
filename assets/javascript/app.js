@@ -12,9 +12,9 @@ var questions = [
         desc: "assets/images/seinfeld2.gif"
     },
     {
-        question: "We all remember when George and an Andrea Doria survivor lost out to Elaine's boyfriend, Alan, for an apartment. When George confronts Alan about the apartment, Alan makes a comment about George's what?",
-        answers: ["chin", "hairline", "ears", "nose"],
-        answer: ["chin", 0],
+        question: "In what year did 'Seinfeld' win the Emmy for Outstanding Comedy Series?",
+        answers: ["1993", "1994", "1995", "1996"],
+        answer: ["1993", 0],
         desc: "assets/images/seinfeld3.gif"
     },
     {

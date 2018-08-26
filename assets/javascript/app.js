@@ -81,7 +81,7 @@ $("#startButton").on("click", function () {
     $("#row2").html('<div class="col-5 mainContentBox mt-2 mx-auto" id="question">');
     $("#row2").append('<div class="col-5 mainContentBox mt-2 mx-auto" id="answer">');
 
-    $("#timer").append("<p>Time Remaining: 30 seconds</p>");
+    // $("#timer").append("<p>Time Remaining: 30 seconds</p>");
 
     runGame();
 })
@@ -95,6 +95,7 @@ function runGame() {
     runQuestion();
 
     function runQuestion() {
+        $("#timer").html("<p>Time Remaining: 30 seconds</p>");
         $("#question").empty();
 
         if (qi === 10) {
@@ -142,7 +143,7 @@ function runGame() {
                             $("#answer").html("<p><img src=" + questions[qi].desc + " class='gifImage img-responsive mx-auto';></p>");
                             qi += 1;
                             correct += 1;
-                            $("#timer").html("<p>Time Remaining: 30 seconds</p>");
+                            // $("#timer").html("<p>Time Remaining: 30 seconds</p>");
                             setTimeout(runQuestion, 3000);
 
                         }, (1000 * 4))
@@ -156,7 +157,7 @@ function runGame() {
                             $("#answer").html("<p><img src=" + questions[qi].desc + " class='gifImage img-responsive mx-auto';></p>");
                             qi += 1;
                             incorrect += 1;
-                            $("#timer").html("<p>Time Remaining: 30 seconds</p>");
+                            // $("#timer").html("<p>Time Remaining: 30 seconds</p>");
                             setTimeout(runQuestion, 3000);
                         }, (1000 * 4))
 
@@ -190,7 +191,7 @@ function runGame() {
                             $("#answer").html("<p><img src=" + questions[qi].desc + " class='gifImage img-responsive mx-auto';></p>");
                             qi += 1;
                             unanswered += 1;
-                            $("#timer").html("<p>Time Remaining: 30 seconds</p>");
+                            // $("#timer").html("<p>Time Remaining: 30 seconds</p>");
                             setTimeout(runQuestion, 3000);
                         }, (1000 * 4))
                     }

@@ -109,8 +109,8 @@ function runGame() {
             // $('#question').append("<p>Unanswered questions: "+unanswered+"</p>");
             // $('#answer').append(reportIncorrect);
             // $('#answer').append(reportUnanswered);
-            $('#answer').html("<br><p>Start Again?</p>");
-            // $(".startAgainButton").click(runGame());
+            $('#answer').html("<br><p><span class='startAgainButton'>Start Again?</span></p>");
+            $(".startAgainButton").on("click",runGame);
         };
         var answerChosen = false;
         //Game starts here

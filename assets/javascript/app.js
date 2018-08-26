@@ -82,25 +82,34 @@ $("#startButton").on("click", function () {
     $("#row2").append('<div class="col-5 mainContentBox mt-2 mx-auto" id="answer">');
 
     $("#timer").append("<p>Time Remaining: 30 seconds</p>");
-    var gameScore = runGame();
+
+    runGame();
 })
 
 function runGame() {
     var correct = 0;
     var incorrect = 0;
     var unanswered = 0;
-    var qi = 1;
-    // while (qi<questions.length){
-    runQuestion(qi);
-    // };
+    var qi = 0;
 
-    // setTimeout(function(){
-    //     while (qi < questions.length) {
-    //         runQuestion(qi);
-    //         qi++;
-    // }, (1000 * 40));
+    if (qi<9){
+    runQuestion();
+    
+    };
 
-    function runQuestion(qi) {
+    // if (qi===9){
+    //     var reportCorrect = $("<p>").text(correct);
+    //     var reportIncorrect = $("<p>").text(incorrect);
+    //     var reportUnanswered = $("<p>").text(unanswered);
+    //     $('#answer').empty();
+    //     $('#answer').append(reportCorrect);
+    //     $('#answer').append(reportIncorrect);
+    //     $('#answer').append(reportUnanswered);
+    //     $('#answer').append("<p class='startAgainButton'>Start Again?</p>");
+    //     $(".startAgainButton").click(runGame());
+    // }
+
+    function runQuestion() {
         var answerChosen = false;
         //Game starts here
         $('#question').append('<p>' + questions[qi].question + '</p>');
@@ -110,28 +119,34 @@ function runGame() {
             "C. <span class='mulChoice'>" + questions[qi].answers[2] + "</span><br>" +
             "D. <span class='mulChoice'>" + questions[qi].answers[3] + "</span><br></p>"
         );
-        var t = 5;
+        var t = 30;
         var time = setInterval(function () {
             //Stop question when user clicks answer and handles right/wrong answers
             if (answerChosen) {
-                console.log("answerIsChosen");
+                // console.log("answerIsChosen");
                 if ($("#clicked").text().toLowerCase() === questions[qi].answer[0].toLowerCase()) {
                     console.log("correct");
                     $("#answer").html("<p>Right! <br> The correct answer is: " + questions[qi].answer[0] + "</p>");
-                    correct += 1;
+                    
                     var gitInt = setTimeout(function () {
                         $("#answer").html("<p><img src=" + questions[qi].desc + " class='gifImage img-responsive mx-auto';></p>");
+                        qi += 1;
+                        runQuestion();
+                        correct += 1;
                     }, (1000 * 4))
-                    // qi += 1;
+                    ;
                 }
                 else {
-                    console.log("incorrect");
+                    // console.log("incorrect");
                     $("#answer").html("<p>Wrong! <br> The correct answer is: " + questions[qi].answer[0] + "</p>");
-                    incorrect += 1;
+                    
                     var gitInt = setTimeout(function () {
                         $("#answer").html("<p><img src=" + questions[qi].desc + " class='gifImage img-responsive mx-auto';></p>");
+                        qi += 1;
+                        incorrect += 1;
+                        runQuestion();
                     }, (1000 * 4))
-                    // qi += 1;
+                    
                 };
                 ;
                 clearInterval(time);
@@ -141,7 +156,7 @@ function runGame() {
 
             if (t > 0 && !answerChosen) {
                 t--;
-                console.log(t);
+                // console.log(t);
                 $("#timer").html("<p>Time Remaining: " + t + " seconds</p>");
 
                 $(".mulChoice").off("click");
@@ -157,18 +172,22 @@ function runGame() {
                     clearInterval(time);
                     $("#timer").html("<p>Time Remaining: " + t + " seconds</p>");
                     $("#answer").html("<p>You're out of time! <br> The correct answer is: " + questions[qi].answer[0] + "</p>");
-                    console.log(qi);
+                    // console.log(qi);
                     var gitInt = setTimeout(function () {
                         $("#answer").html("<p><img src=" + questions[qi].desc + " class='gifImage img-responsive mx-auto';></p>");
+                        qi += 1;
+                        unanswered += 1;
+                        runQuestion();
                     }, (1000 * 4))
 
-                    unanswered += 1;
-                    // qi += 1;
+                    
+                   
 
                 }
             };
             // console.log(qi, correct, unanswered, incorrect)
         }, 1000);
+    return(qi, correct, unanswered, incorrect)
     }
 
 

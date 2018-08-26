@@ -128,7 +128,7 @@ function runGame() {
                 "C. <span class='mulChoice'>" + questions[qi].answers[2] + "</span><br>" +
                 "D. <span class='mulChoice'>" + questions[qi].answers[3] + "</span><br></p>"
             );
-            var t = 31;
+            var t = 30;
             var time = setInterval(function () {
                 //Stop question when user clicks answer and handles right/wrong answers
 
@@ -142,6 +142,7 @@ function runGame() {
                             $("#answer").html("<p style='width:100%'><img src=" + questions[qi].desc + " class='gifImage img-responsive mx-auto';></p>");
                             qi += 1;
                             correct += 1;
+                            $("#timer").html("<p>Time Remaining: 30 seconds</p>");
                             setTimeout(runQuestion, 3000);
 
                         }, (1000 * 4))
@@ -155,6 +156,7 @@ function runGame() {
                             $("#answer").html("<p><img src=" + questions[qi].desc + " class='gifImage img-responsive mx-auto';></p>");
                             qi += 1;
                             incorrect += 1;
+                            $("#timer").html("<p>Time Remaining: 30 seconds</p>");
                             setTimeout(runQuestion, 3000);
                         }, (1000 * 4))
 
@@ -188,6 +190,7 @@ function runGame() {
                             $("#answer").html("<p><img src=" + questions[qi].desc + " class='gifImage img-responsive mx-auto';></p>");
                             qi += 1;
                             unanswered += 1;
+                            $("#timer").html("<p>Time Remaining: 30 seconds</p>");
                             setTimeout(runQuestion, 3000);
                         }, (1000 * 4))
                     }

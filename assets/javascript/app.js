@@ -74,7 +74,7 @@ $("#startButton").on("click", function () {
     $(".container").append('<div class="row" id="row2">');
     //Add columns to row 1 and initial timer
     $("#row1").html('<div class="col-5 mainContentBox mt-5 mb-5 mx-auto" id="logo">');
-    $("#logo").append("<p><img src='assets/images/seinfeldLogo3.png' id='quizLogo'></p>");
+    $("#logo").append("<p style='width:100%'><img src='assets/images/seinfeldLogo3.png' id='quizLogo'></p>");
     $("#row1").append('<div class="col-5 mainContentBox mt-5 mb-5 mx-auto" id="timer">');
 
     //Add columns to row 2 and first question

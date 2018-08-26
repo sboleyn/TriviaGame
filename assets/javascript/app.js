@@ -92,108 +92,110 @@ function runGame() {
     var unanswered = 0;
     var qi = 0;
 
-    if (qi<9){
     runQuestion();
-    
-    };
-
-    if (qi===9){
-        var reportCorrect = $("<p>").text(correct);
-        var reportIncorrect = $("<p>").text(incorrect);
-        var reportUnanswered = $("<p>").text(unanswered);
-        $('#answer').empty();
-        $('#answer').append(reportCorrect);
-        $('#answer').append(reportIncorrect);
-        $('#answer').append(reportUnanswered);
-        $('#answer').append("<p class='startAgainButton'>Start Again?</p>");
-        $(".startAgainButton").click(runGame());
-    }
 
     function runQuestion() {
+        $("#question").empty();
+        if (qi === 10) {
+            var reportCorrect = $("<p>").text(correct);
+            var reportIncorrect = $("<p>").text(incorrect);
+            var reportUnanswered = $("<p>").text(unanswered);
+            $('#answer').empty();
+            $('#answer').append(reportCorrect);
+            $('#answer').append(reportIncorrect);
+            $('#answer').append(reportUnanswered);
+            $('#answer').append("<p class='startAgainButton'>Start Again?</p>");
+            $(".startAgainButton").click(runGame());
+        }
         var answerChosen = false;
         //Game starts here
-        $('#question').append('<p>' + questions[qi].question + '</p>');
-        $('#answer').append(
-            "<p> A. <span class='mulChoice'>" + questions[qi].answers[0] + "</span><br>" +
-            "B. <span class='mulChoice'>" + questions[qi].answers[1] + "</span><br>" +
-            "C. <span class='mulChoice'>" + questions[qi].answers[2] + "</span><br>" +
-            "D. <span class='mulChoice'>" + questions[qi].answers[3] + "</span><br></p>"
-        );
-        var t = 3;
-        var time = setInterval(function () {
-            //Stop question when user clicks answer and handles right/wrong answers
-            if (answerChosen) {
-                // console.log("answerIsChosen");
-                if ($("#clicked").text().toLowerCase() === questions[qi].answer[0].toLowerCase()) {
-                    // console.log("correct");
-                    $("#answer").html("<p>Right! <br> The correct answer is: " + questions[qi].answer[0] + "</p>");
-                    
-                    var gitInt = setTimeout(function () {
-                        $("#answer").html("<p><img src=" + questions[qi].desc + " class='gifImage img-responsive mx-auto';></p>");
-                        qi += 1;
-                        correct += 1;
-                        $("#answer").empty();
-                        $("#question").empty();
-                        runQuestion();
-                    }, (1000 * 4))
+        if (qi < questions.length) {
+            $('#question').append('<p>' + questions[qi].question + '</p>');
+            $('#answer').html(
+                "<p> A. <span class='mulChoice'>" + questions[qi].answers[0] + "</span><br>" +
+                "B. <span class='mulChoice'>" + questions[qi].answers[1] + "</span><br>" +
+                "C. <span class='mulChoice'>" + questions[qi].answers[2] + "</span><br>" +
+                "D. <span class='mulChoice'>" + questions[qi].answers[3] + "</span><br></p>"
+            );
+            var t = 3;
+            var time = setInterval(function () {
+                //Stop question when user clicks answer and handles right/wrong answers
+
+                if (answerChosen) {
+                    // console.log("answerIsChosen");
+                    if ($("#clicked").text().toLowerCase() === questions[qi].answer[0].toLowerCase()) {
+                        // console.log("correct");
+                        $("#answer").html("<p>Right! <br> The correct answer is: " + questions[qi].answer[0] + "</p>");
+
+                        var gitInt = setTimeout(function () {
+                            $("#answer").html("<p><img src=" + questions[qi].desc + " class='gifImage img-responsive mx-auto';></p>");
+                            qi += 1;
+                            correct += 1;
+                            setTimeout(runQuestion, 3000);
+
+                        }, (1000 * 4))
+                            ;
+                    }
+                    else {
+                        // console.log("incorrect");
+                        $("#answer").html("<p>Wrong! <br> The correct answer is: " + questions[qi].answer[0] + "</p>");
+
+                        var gitInt = setTimeout(function () {
+                            $("#answer").html("<p><img src=" + questions[qi].desc + " class='gifImage img-responsive mx-auto';></p>");
+                            qi += 1;
+                            incorrect += 1;
+                            setTimeout(runQuestion, 3000);
+                        }, (1000 * 4))
+
+                    };
                     ;
-                }
-                else {
-                    // console.log("incorrect");
-                    $("#answer").html("<p>Wrong! <br> The correct answer is: " + questions[qi].answer[0] + "</p>");
-                    
-                    var gitInt = setTimeout(function () {
-                        $("#answer").html("<p><img src=" + questions[qi].desc + " class='gifImage img-responsive mx-auto';></p>");
-                        qi += 1;
-                        incorrect += 1;
-                        $("#answer").empty();
-                        $("#question").empty();
-                        runQuestion();
-                    }, (1000 * 4))
-                    
-                };
-                ;
-                clearInterval(time);
-                return;
-            }
-            //Timer is counting down
-
-            if (t > 0 && !answerChosen) {
-                t--;
-                // console.log(t);
-                $("#timer").html("<p>Time Remaining: " + t + " seconds</p>");
-
-                $(".mulChoice").off("click");
-                $(".mulChoice").click(function () {
-                    //stops timer
-                    $(this).attr("id", "clicked");
-                    answerChosen = true;
-                    return;
-                })
-
-                //if timer reaches 0, then do this
-                if (t <= 0) {
                     clearInterval(time);
-                    $("#timer").html("<p>Time Remaining: " + t + " seconds</p>");
-                    $("#answer").html("<p>You're out of time! <br> The correct answer is: " + questions[qi].answer[0] + "</p>");
-                    // console.log(qi);
-                    var gitInt = setTimeout(function () {
-                        $("#answer").html("<p><img src=" + questions[qi].desc + " class='gifImage img-responsive mx-auto';></p>");
-                        qi += 1;
-                        unanswered += 1;
-                        $("#answer").empty();
-                        $("#question").empty();
-                        runQuestion();
-                    }, (1000 * 4))
-
-                    
-                   
-
+                    return;
                 }
-            };
-            // console.log(qi, correct, unanswered, incorrect)
-        }, 1000);
-    return(qi, correct, unanswered, incorrect)
+                //Timer is counting down
+
+                if (t > 0 && !answerChosen) {
+                    t--;
+                    // console.log(t);
+                    $("#timer").html("<p>Time Remaining: " + t + " seconds</p>");
+
+                    $(".mulChoice").off("click");
+                    $(".mulChoice").click(function () {
+                        //stops timer
+                        $(this).attr("id", "clicked");
+                        answerChosen = true;
+                        return;
+                    })
+
+                    //if timer reaches 0, then do this
+                    if (t <= 0) {
+                        clearInterval(time);
+                        $("#timer").html("<p>Time Remaining: " + t + " seconds</p>");
+                        $("#answer").html("<p>You're out of time! <br> The correct answer is: " + questions[qi].answer[0] + "</p>");
+                        // console.log(qi);
+                        var gitInt = setTimeout(function () {
+                            $("#answer").html("<p><img src=" + questions[qi].desc + " class='gifImage img-responsive mx-auto';></p>");
+                            qi += 1;
+                            unanswered += 1;
+                            setTimeout(runQuestion, 3000);
+                        }, (1000 * 4))
+                    }
+                };
+            }, 1000);
+        };
+
+        // if (qi === 10) {
+        //     var reportCorrect = $("<p>").text(correct);
+        //     var reportIncorrect = $("<p>").text(incorrect);
+        //     var reportUnanswered = $("<p>").text(unanswered);
+        //     $('#answer').empty();
+        //     $('#answer').append(reportCorrect);
+        //     $('#answer').append(reportIncorrect);
+        //     $('#answer').append(reportUnanswered);
+        //     $('#answer').append("<p class='startAgainButton'>Start Again?</p>");
+        //     $(".startAgainButton").click(runGame());
+        // }
+        console.log(qi, correct, unanswered, incorrect);
     }
 
 

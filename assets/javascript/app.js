@@ -99,16 +99,6 @@ function runGame() {
         if (qi === 10) {
             console.log("i freaking equate");
             $('#question').append("<p>All done. Here's how you did..<br>Correct answers: "+correct+"<br>Incorrect answers: "+incorrect+"<br>Unanswered questions: "+unanswered+"</p>");
-            // var reportCorrect = $("<p>").text(correct);
-            // var reportIncorrect = $("<p>").text(incorrect);
-            // var reportUnanswered = $("<p>").text(unanswered);
-            // $('#answer').empty();
-            // $('#question').append("<p>All done. Here's how you did..</p>");
-            // $('#question').append("<p>Correct answers: "+correct+"</p>");
-            // $('#question').append("<p>Incorrect answers: "+incorrect+"</p>");
-            // $('#question').append("<p>Unanswered questions: "+unanswered+"</p>");
-            // $('#answer').append(reportIncorrect);
-            // $('#answer').append(reportUnanswered);
             $('#answer').html("<br><p><span class='startAgainButton'>Start Again?</span></p>");
             $(".startAgainButton").on("click",runGame);
         };
@@ -189,18 +179,7 @@ function runGame() {
             }, 1000);
         };
 
-        // if (qi === 10) {
-        //     var reportCorrect = $("<p>").text(correct);
-        //     var reportIncorrect = $("<p>").text(incorrect);
-        //     var reportUnanswered = $("<p>").text(unanswered);
-        //     $('#answer').empty();
-        //     $('#answer').append(reportCorrect);
-        //     $('#answer').append(reportIncorrect);
-        //     $('#answer').append(reportUnanswered);
-        //     $('#answer').append("<p class='startAgainButton'>Start Again?</p>");
-        //     $(".startAgainButton").click(runGame());
-        // }
-        console.log(qi==10);
+        // console.log(qi==10);
     }
 
 

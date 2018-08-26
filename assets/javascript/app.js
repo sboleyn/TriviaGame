@@ -139,7 +139,7 @@ function runGame() {
                         $("#answer").html("<p>Right! <br> The correct answer is: " + questions[qi].answer[0] + "</p>");
 
                         var gitInt = setTimeout(function () {
-                            $("#answer").html("<p><img src=" + questions[qi].desc + " class='gifImage img-responsive mx-auto';></p>");
+                            $("#answer").html("<p style='width:100%;'><img src=" + questions[qi].desc + " class='gifImage img-responsive mx-auto';></p>");
                             qi += 1;
                             correct += 1;
                             $("#timer").html("<p>Time Remaining: 30 seconds</p>");
@@ -153,7 +153,7 @@ function runGame() {
                         $("#answer").html("<p>Wrong! <br> The correct answer is: " + questions[qi].answer[0] + "</p>");
 
                         var gitInt = setTimeout(function () {
-                            $("#answer").html("<p><img src=" + questions[qi].desc + " class='gifImage img-responsive mx-auto';></p>");
+                            $("#answer").html("<p style='width:100%;'><img src=" + questions[qi].desc + " class='gifImage img-responsive mx-auto';></p>");
                             qi += 1;
                             incorrect += 1;
                             $("#timer").html("<p>Time Remaining: 30 seconds</p>");
@@ -187,7 +187,7 @@ function runGame() {
                         $("#answer").html("<p>You're out of time! <br> The correct answer is: " + questions[qi].answer[0] + "</p>");
                         // console.log(qi);
                         var gitInt = setTimeout(function () {
-                            $("#answer").html("<p><img src=" + questions[qi].desc + " class='gifImage img-responsive mx-auto';></p>");
+                            $("#answer").html("<p style='width:100%;><img src=" + questions[qi].desc + " class='gifImage img-responsive mx-auto';></p>");
                             qi += 1;
                             unanswered += 1;
                             $("#timer").html("<p>Time Remaining: 30 seconds</p>");

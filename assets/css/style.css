@@ -40,8 +40,9 @@ body{
     font-size: 100%;
 }
 
-#timer{
-    width: 100px;
+#timer p{
+    width: 168px;
+    padding: auto;
 }
 
 #quizLogo{

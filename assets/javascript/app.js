@@ -112,13 +112,13 @@ function runGame() {
             if (qi<2){
                 $('html').css('backgroundImage', 'url(assets/images/exterior1.jpg)')
             };
-            if (qi>2 && qi<5){
+            if (qi>=2 && qi<4){
                 $('html').css('backgroundImage', 'url(assets/images/kitchen1.jpg)')
             };
-            if (qi>=5 && qi<7){
+            if (qi>=4 && qi<6){
                 $('html').css('backgroundImage', 'url(assets/images/bathroom1.jpg)')
             };
-            if (qi>=8 && qi<questions.length){
+            if (qi>=6 && qi<questions.length){
                 $('html').css('backgroundImage', 'url(assets/images/livingRoom1.jpg)')
             };
 

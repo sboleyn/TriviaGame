@@ -55,6 +55,12 @@ body{
     /* margin-top: 10px */
 }
 
+.mulChoice:hover{
+    background-color: black;
+}
+
+
+
 /* @media screen and (max-height: 300px){
     .mainContentBox{
         background-color: darkred;

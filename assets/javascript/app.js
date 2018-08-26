@@ -129,6 +129,7 @@ function runGame() {
                 "C. <span class='mulChoice'>" + questions[qi].answers[2] + "</span><br>" +
                 "D. <span class='mulChoice'>" + questions[qi].answers[3] + "</span><br></p>"
             );
+
             var t = 30;
             var time = setInterval(function () {
                 //Stop question when user clicks answer and handles right/wrong answers
@@ -177,9 +178,12 @@ function runGame() {
                     $(".mulChoice").click(function () {
                         //stops timer
                         $(this).attr("id", "clicked");
+                        $(this).css("backgroundColor", "black");
                         answerChosen = true;
                         return;
                     })
+
+                    
 
                     //if timer reaches 0, then do this
                     if (t <= 0) {

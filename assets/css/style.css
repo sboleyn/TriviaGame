@@ -40,6 +40,10 @@ body{
     font-size: 100%;
 }
 
+#timer{
+    width: 100px;
+}
+
 #quizLogo{
     width: 100%;
 }

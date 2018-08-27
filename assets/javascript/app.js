@@ -95,9 +95,16 @@ function runGame() {
     runQuestion();
 
     function runQuestion() {
+        //will be used later for adding the gif to the image after the time runs out or user answers
+        function addGif(){
+            $("#answer").html("<img src=" + questions[qi].desc + " class='gifImage img-responsive mx-auto'>");
+        };
+
+        //This goes here because it makes the countdown work most smoothly
         $("#timer").html("<p>Time Remaining: 30 seconds</p>");
         $("#question").empty();
 
+        //Runs if all questions have been presented
         if (qi === 10) {
             console.log("i freaking equate");
             $('#question').append("<p>All done. Here's how you did..<br>Correct answers: "+correct+"<br>Incorrect answers: "+incorrect+"<br>Unanswered questions: "+unanswered+"</p>");
@@ -141,7 +148,7 @@ function runGame() {
                         $("#answer").html("<p>Right! <br> The correct answer is: " + questions[qi].answer[0] + "</p>");
 
                         var gitInt = setTimeout(function () {
-                            $("#answer").html("<img src=" + questions[qi].desc + " class='gifImage img-responsive mx-auto';>");
+                            addGif();
                             qi += 1;
                             correct += 1;
                             // $("#timer").html("<p>Time Remaining: 30 seconds</p>");
@@ -155,7 +162,7 @@ function runGame() {
                         $("#answer").html("<p>Wrong! <br> The correct answer is: " + questions[qi].answer[0] + "</p>");
 
                         var gitInt = setTimeout(function () {
-                            $("#answer").html("<p><img src=" + questions[qi].desc + " class='gifImage img-responsive mx-auto';></p>");
+                            addGif();
                             qi += 1;
                             incorrect += 1;
                             // $("#timer").html("<p>Time Remaining: 30 seconds</p>");
@@ -182,9 +189,7 @@ function runGame() {
                         answerChosen = true;
                         return;
                     })
-
                     
-
                     //if timer reaches 0, then do this
                     if (t <= 0) {
                         clearInterval(time);
@@ -192,10 +197,9 @@ function runGame() {
                         $("#answer").html("<p>You're out of time! <br> The correct answer is: " + questions[qi].answer[0] + "</p>");
                         // console.log(qi);
                         var gitInt = setTimeout(function () {
-                            $("#answer").html("<p><img src=" + questions[qi].desc + " class='gifImage img-responsive mx-auto';></p>");
+                            addGif();
                             qi += 1;
                             unanswered += 1;
-                            // $("#timer").html("<p>Time Remaining: 30 seconds</p>");
                             setTimeout(runQuestion, 3000);
                         }, (1000 * 4))
                     }

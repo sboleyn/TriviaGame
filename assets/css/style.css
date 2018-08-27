@@ -54,9 +54,6 @@ body{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    /* max-height: 200px;
-    max-width: 100%;
-    display: block; */
     max-width:100%;
     max-height:100%;
     height: auto;
@@ -84,7 +81,7 @@ body{
     }
 }
 
-@media screen and (max-width: 670px) {
+@media screen and (max-width: 764px) {
     #loadingPageImgLogo{
         width: 350px;
     }
@@ -94,7 +91,7 @@ body{
 }
 
 /* Width at 320px and below */
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 412px) {
     #loadingPageImgLogo{
         width: 168px;
     }
@@ -109,25 +106,6 @@ body{
         width: 140px;
     }
     .mainContentBox p{
-        font-size: small;
+        font-size: x-small;
     }
 }
-
-  
-/* @include media-breakpoint-up(sm) {
-html {
-    font-size: 1.2rem;
-}
-}
-
-@include media-breakpoint-up(md) {
-html {
-    font-size: 1.4rem;
-}
-}
-
-@include media-breakpoint-up(lg) {
-html {
-    font-size: 1.6rem;
-}
-} */

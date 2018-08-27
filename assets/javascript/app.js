@@ -141,7 +141,7 @@ function runGame() {
                         $("#answer").html("<p>Right! <br> The correct answer is: " + questions[qi].answer[0] + "</p>");
 
                         var gitInt = setTimeout(function () {
-                            $("#answer").html("<p><img src=" + questions[qi].desc + " class='gifImage img-responsive mx-auto';></p>");
+                            $("#answer").html("<img src=" + questions[qi].desc + " class='gifImage img-responsive mx-auto';>");
                             qi += 1;
                             correct += 1;
                             // $("#timer").html("<p>Time Remaining: 30 seconds</p>");
